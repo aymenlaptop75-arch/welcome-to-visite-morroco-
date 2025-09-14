@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Plats Marocains</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="unnamed__1_-removebg-preview.png" alt="Logo Cuisine" />
+                <h1>La Cuisine Marocaine</h1>
+            </div>
+
+            <!-- Barre de recherche -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Rechercher un plat...">
+                <button>🔍</button>
+            </div>
+        </div>
+
+        <!-- Menu de navigation -->
+        <nav>
+            <ul>
+                <li><a href="#tajine">Tajine</a></li>
+                <li><a href="#couscous">Couscous</a></li>
+                <li><a href="#pastilla">Pastilla</a></li>
+                <li><a href="#salade">Salades</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy.html">Confidentialité</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="introduction">
+        <h2>Bienvenue dans l'univers des plats marocains</h2>
+        <p>Découvrez la richesse de la cuisine marocaine, une fusion unique de saveurs, d'épices et de traditions. Explorez nos plats emblématiques.</p>
+    </section>
+
+    <section id="tajine" class="plats">
+        <h2>Tajine</h2>
+        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQAVEpi5mW-CNc1E4Yv-79q96f2rj_w_ybnWZFwEsv5eq_572HBIOeVQARm72h9" alt="Tajine Marocain">
+        <p>Le Tajine est un plat traditionnel cuit dans un ustensile en terre cuite, avec des viandes, des légumes, et des épices délicates comme le safran, la coriandre et le cumin.</p>
+    </section>
+
+    <section id="couscous" class="plats">
+        <h2>Couscous</h2>
+        <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQ2wv41o3COc4lnGUO2bHn0IdqF9zFVNR40oqt51YIJac7wO_wUM4a79Urxk__nkYYrtcfk8qPCAAdDi8ypXt0CvGyI_kimc-DteD4XU2tH3bWwc80" alt="Couscous Marocain">
+        <p>Le Couscous est un plat à base de semoule de blé, souvent servi avec des légumes, de la viande ou du poulet et accompagné de sauce épicée.</p>
+    </section>
+
+    <section id="pastilla" class="plats">
+        <h2>Pastilla</h2>
+        <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcS5nhY15efgb1Ub83jETQy4t7aa1Dnxugph6cuaPHzol4cnAb16wPKqYfqQ3IBoxOCcnKU-0XljCrYVKIrcfR2i4Gm4brwa-W3YbSMYDehnhE3erVE" alt="Pastilla Marocaine">
+        <p>La Pastilla est un plat sucré-salé composé de pâte feuilletée, de poulet ou de pigeon, de cannelle et de sucre glace. C'est un véritable délice pour les papilles.</p>
+    </section>
+
+    <section id="salade" class="plats">
+        <h2>Salades Marocaines</h2>
+        <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcT-AWRd2tCWQ2vG0sj-hoqk7I_ZZjuzYcVa_TTbOl8MAMpVX2VdDmNTg9DfvADvu0Y7uPVXBUiXc0-VkqExfBQyH5_iiL1ZkyBcLYs8sVqffZAkz3c" alt="Salade Marocaine">
+        <p>Les salades marocaines sont diverses et variées, avec des ingrédients frais comme les tomates, les concombres, les olives, et des épices qui relèvent chaque bouchée.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Cuisine Marocaine | Tous droits réservés</p>
+    </footer>
+
+    <script>
+    const searchInput = document.getElementById('searchInput');
+    const plats = document.querySelectorAll('.plats');
+
+    searchInput.addEventListener('input', function () {
+        const filter = searchInput.value.toLowerCase();
+
+        plats.forEach(plat => {
+            const title = plat.querySelector('h2').textContent.toLowerCase();
+            const description = plat.querySelector('p').textContent.toLowerCase();
+
+            if (title.includes(filter) || description.includes(filter)) {
+                plat.style.display = "block";
+            } else {
+                plat.style.display = "none";
+            }
+        });
+    });
+    </script>
+</body>
+</html>
