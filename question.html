@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أسئلة سهلة وإجابات</title>
+  <style>
+    body {
+      font-family: "Cairo", sans-serif;
+      background: #f3f6fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #0078ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #005ec4;
+    }
+
+    .answers {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #333;
+      text-align: right;
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="quiz">
+      <h2 id="question">السؤال 1: ما لون السماء؟</h2>
+      <input type="text" id="answer" placeholder="اكتب إجابتك هنا">
+      <button onclick="nextQuestion()">التالي</button>
+    </div>
+
+    <div id="answersList" class="answers"></div>
+  </div>
+
+  <script>
+    const questions = [
+      "السؤال 1: ما لون السماء؟",
+      "السؤال 2: كم عدد أرجل القطة؟",
+      "السؤال 3: ما اسم عاصمة المغرب؟",
+      "السؤال 4: كم عدد أصابع اليد؟",
+      "السؤال 5: ما الحيوان الذي يلقب بملك الغابة؟",
+      "السؤال 6: كم عدد أيام الأسبوع؟",
+      "السؤال 7: ما هو الشيء الذي نشربه كل يوم؟",
+      "السؤال 8: ما هو لون الحليب؟",
+      "السؤال 9: ما هو البحر الذي لا يوجد فيه ماء؟",
+      "السؤال 10: كم شهر في السنة؟"
+    ];
+
+    let currentQuestion = 0;
+    const answers = [];
+
+    function nextQuestion() {
+      const input = document.getElementById("answer");
+      const userAnswer = input.value.trim();
+
+      if (userAnswer === "") {
+        alert("من فضلك أكتب إجابتك قبل الانتقال للسؤال التالي 😊");
+        return;
+      }
+
+      // حفظ الإجابة
+      answers[currentQuestion] = userAnswer;
+
+      // تنظيف الحقل
+      input.value = "";
+
+      // الانتقال للسؤال التالي
+      currentQuestion++;
+
+      if (currentQuestion >= questions.length) {
+        currentQuestion = 0; // العودة للبداية
+        showAnswers();
+      }
+
+      document.getElementById("question").textContent = questions[currentQuestion];
+    }
+
+    function showAnswers() {
+      let text = "<strong>إجاباتك السابقة:</strong><br>";
+      for (let i = 0; i < questions.length; i++) {
+        text += `${questions[i]} <br> 📝 ${answers[i] || "لم يجب"} <br><br>`;
+      }
+      document.getElementById("answersList").innerHTML = text;
+    }
+  </script>
+
+</body>
+</html>
